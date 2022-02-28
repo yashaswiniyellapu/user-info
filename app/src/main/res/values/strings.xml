@@ -6,4 +6,6 @@
     <string name="user_pin_code">Pin code</string>
     <string name="user_address">Address</string>
     <string name="validate">Validate</string>
+    <string name="confirm_button">Confirm</string>
+    <string name="cancel_button">Cancel</string>
 </resources>
