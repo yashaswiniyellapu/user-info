@@ -67,11 +67,11 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
-        savedInstanceState.getString("userName")
-        savedInstanceState.getString("email")
-        savedInstanceState.getString("phoneNumber")
-        savedInstanceState.getString("pinCode")
-        savedInstanceState.getString("userAddress")
+        binding.disUsernameTV.text= savedInstanceState.getString("userName")
+        binding.disEmailTV.text=savedInstanceState.getString("email")
+        binding.disPhoneNumberTV.text=savedInstanceState.getString("phoneNumber")
+        binding.disPinCodeTV.text= savedInstanceState.getString("pinCode")
+        binding.disAddressTV.text=savedInstanceState.getString("userAddress")
         binding.displayTV.visibility=savedInstanceState.getInt("visibilityDisplay")
         binding.inputTV.visibility=savedInstanceState.getInt("visibilityInput")
     }
