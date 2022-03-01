@@ -3,6 +3,7 @@ package com.everest.userinfo
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.view.View
 import android.widget.Toast
 import androidx.core.view.isInvisible
@@ -51,6 +52,28 @@ class HomeActivity : AppCompatActivity() {
         }
 
 
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString("userName",binding.inputUserName.text.toString())
+        outState.putString("email",binding.inputEmail.text.toString())
+        outState.putString("phoneNumber",binding.inputPh.text.toString())
+        outState.putString("pinCode",binding.inputPinCode.text.toString())
+        outState.putString("userAddress",binding.inputAddress.text.toString())
+        outState.putInt("visibilityDisplay", binding.displayTV.visibility)
+        outState.putInt("visibilityInput",binding.inputTV.visibility)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        savedInstanceState.getString("userName")
+        savedInstanceState.getString("email")
+        savedInstanceState.getString("phoneNumber")
+        savedInstanceState.getString("pinCode")
+        savedInstanceState.getString("userAddress")
+        binding.displayTV.visibility=savedInstanceState.getInt("visibilityDisplay")
+        binding.inputTV.visibility=savedInstanceState.getInt("visibilityInput")
     }
 
 
