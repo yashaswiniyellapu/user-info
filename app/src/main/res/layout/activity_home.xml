@@ -108,8 +108,8 @@
             android:id="@+id/displayTV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
             android:orientation="vertical"
+            android:layout_gravity="center_vertical"
             android:visibility="gone"
             >
 
@@ -123,13 +123,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/user_name"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                   android:textSize="18sp"/>
 
                 <TextView
                     android:id="@+id/dis_username_TV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="100dp"
+                    android:textSize="15sp"
                     android:text="@string/user_name" />
             </LinearLayout>
 
@@ -144,13 +146,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/user_email"
-                    android:textStyle="bold" />
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    />
 
                 <TextView
                     android:id="@+id/dis_emailTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="138dp"
+                    android:textSize="15sp"
                     android:text="@string/user_email" />
             </LinearLayout>
 
@@ -165,13 +170,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/user_ph"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/dis_phone_number_TV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="66dp"
+                    android:textSize="15sp"
                     android:text="@string/user_ph" />
             </LinearLayout>
 
@@ -186,13 +193,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/user_pin_code"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/dis_pin_code_TV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="115dp"
+                    android:textSize="15sp"
                     android:text="@string/user_pin_code" />
             </LinearLayout>
 
@@ -207,13 +216,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/user_address"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/dis_address_TV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="119dp"
+                    android:textSize="15sp"
                     android:text="@string/user_address" />
             </LinearLayout>
 
