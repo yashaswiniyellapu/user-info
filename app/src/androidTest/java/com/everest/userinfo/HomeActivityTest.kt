@@ -4,6 +4,10 @@ package com.everest.userinfo
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.*
 import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.intent.Intents.intended
+import androidx.test.espresso.intent.matcher.IntentMatchers.hasExtra
+import androidx.test.espresso.intent.matcher.IntentMatchers.toPackage
+import androidx.test.espresso.intent.rule.IntentsTestRule
 
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.ActivityScenarioRule
@@ -26,6 +30,9 @@ class HomeActivityTest {
 
     @get:Rule
     val activityRule = ActivityScenarioRule(HomeActivity::class.java)
+
+    @get:Rule
+    var mActivityRule = IntentsTestRule(HomeActivity::class.java)
 
     @Test
     fun useAppContext() {
@@ -69,6 +76,26 @@ class HomeActivityTest {
 
         onView(withId(R.id.inputTV)).check(matches(isDisplayed()))
         onView(withId(R.id.displayTV)).check(matches(isNotFocused()))
+    }
+
+    @Test
+    fun shouldHaveUserValuesOnClickingConfirmButton()
+    {
+        onView(withId(R.id.input_user_name)).perform(typeText("yashu"))
+        onView(withId(R.id.input_email)).perform(typeText("yashu@gmail.com"))
+        onView(withId(R.id.input_ph)).perform(typeText("9182985817"))
+        onView(withId(R.id.input_pin_code)).perform(typeText("515001"))
+        onView(withId(R.id.input_address)).perform(typeText("17/992/1 venugopalnagar oldtown anantapur"))
+
+        onView(withText(equalToIgnoringCase("validate"))).perform(scrollTo(),click())
+        onView(withText(equalToIgnoringCase("confirm"))).perform(click())
+
+        intended(toPackage("com.everest.userinfo"))
+        intended(hasExtra("userName","yashu"))
+                intended(hasExtra("email","yashu@gmail.com"))
+                intended(hasExtra("phoneNumber","9182985817"))
+                intended(hasExtra("pinCode","515001"))
+                intended(hasExtra("userAddress","17/992/1 venugopalnagar oldtown anantapur"))
     }
 
 
