@@ -3,10 +3,7 @@ package com.everest.userinfo
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.view.View
-import android.widget.Toast
-import androidx.core.view.isInvisible
 import com.everest.userinfo.databinding.ActivityHomeBinding
 import com.everest.userinfo.validations.ValidateFields
 
