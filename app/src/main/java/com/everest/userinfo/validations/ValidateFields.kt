@@ -6,59 +6,52 @@ import android.widget.Toast
 import com.everest.userinfo.HomeActivity
 import com.everest.userinfo.databinding.ActivityHomeBinding
 
-class ValidateFields constructor(
-    private var binding: ActivityHomeBinding,
-    private var homeActivity: HomeActivity
-) {
+class ValidateFields constructor(private var homeActivity: HomeActivity) {
 
-    fun validateInputs(): Boolean {
-        if (!Patterns.EMAIL_ADDRESS.matcher(binding.inputEmail.text.trim()).matches()) {
-            Toast.makeText(
-                homeActivity,
-                "Email should have @ and .com or co.in",
-                Toast.LENGTH_SHORT
-            ).show()
+    fun inputs(email:String, phNo:String, pinCode:String): Boolean {
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+          makeToast("Email should have @ and .com or co.in")
             return true
         }
-        if (binding.inputPh.text.length != 10) {
-            Toast.makeText(
-                homeActivity,
-                "phone number should be only length of 10",
-                Toast.LENGTH_SHORT
-            ).show()
+        if (phNo.length != 10) {
+          makeToast("phone number should be only length of 10")
             return true
         }
-        if (binding.inputPinCode.text.length != 6) {
-            Toast.makeText(homeActivity, "pin code should be only length of 6", Toast.LENGTH_SHORT)
-                .show()
+        if (pinCode.length != 6) {
+            makeToast("pin code should be only length of 6")
             return true
         }
         return false
     }
 
-    fun validateMandatoryInputs(): Boolean {
-        if (binding.inputEmail.text.isEmpty()) {
-            Toast.makeText(homeActivity, "Email should not empty", Toast.LENGTH_SHORT).show()
+    fun mandatoryInputs(email:String, phNo:String, pinCode:String, userName:String, address:String): Boolean {
+        if (email.isEmpty()) {
+            makeToast("Email should not empty")
             return true
         }
-        if (binding.inputPh.text.isEmpty()) {
+        if (phNo.isEmpty()) {
 
-            Toast.makeText(homeActivity, "phone number should not empty", Toast.LENGTH_SHORT).show()
+            makeToast("phone number should not empty")
             return true
         }
-        if (binding.inputPinCode.text.isEmpty()) {
-            Toast.makeText(homeActivity, "pin code should not empty", Toast.LENGTH_SHORT).show()
+        if (pinCode.isEmpty()) {
+           makeToast("pin code should not empty")
             return true
         }
-        if (binding.inputUserName.text.isEmpty()) {
-            Toast.makeText(homeActivity, "username should not empty", Toast.LENGTH_SHORT).show()
+        if (userName.isEmpty()) {
+            makeToast("username should not empty")
             return true
         }
-        if (binding.inputAddress.text.isEmpty()) {
-            Toast.makeText(homeActivity, "address should not empty", Toast.LENGTH_SHORT).show()
+        if (address.isEmpty()) {
+            makeToast("address should not empty")
             return true
         }
         return false
+    }
+
+    private fun makeToast(message:String)
+    {
+        Toast.makeText(homeActivity,message,Toast.LENGTH_SHORT).show()
     }
 
 

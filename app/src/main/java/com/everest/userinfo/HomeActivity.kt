@@ -15,36 +15,31 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val validate= ValidateFields(this)
+
+
         binding.validateButton.setOnClickListener {
 
+            if (!validate.inputs(binding.inputEmail.text.trim().toString(),
+                binding.inputPh.text.toString(),binding.inputPinCode.text.toString())
+                                         &&
+                !validate.mandatoryInputs(binding.inputEmail.text.trim().toString(),
+                    binding.inputPh.text.toString(),binding.inputPinCode.text.toString(),
+                binding.inputUserName.text.toString(),binding.inputAddress.text.toString())) {
 
-            if (!ValidateFields(binding, this).validateInputs() && !ValidateFields(
-                    binding,
-                    this
-                ).validateMandatoryInputs()
-            ) {
-                binding.inputTV.visibility = View.GONE
-                binding.displayTV.visibility= View.VISIBLE
-                binding.disUsernameTV.text = binding.inputUserName.text
-                binding.disEmailTV.text = binding.inputEmail.text
-                binding.disPhoneNumberTV.text = binding.inputPh.text
-                binding.disPinCodeTV.text = binding.inputPinCode.text
-                binding.disAddressTV.text = binding.inputAddress.text
+                displayValidatedText(View.GONE, View.VISIBLE)
             }
 
         }
+
+
         binding.cancelButton.setOnClickListener{
             binding.inputTV.visibility= View.VISIBLE
             binding.displayTV.visibility=View.GONE
         }
+
+
         binding.confirmButton.setOnClickListener{
-//            val bundle = Bundle()
-//            bundle.putParcelable("user", getUser())
-//            bundle.putString(USER_NAME,binding.inputUserName.text.toString())
-//            bundle.putString(EMAIL,binding.inputEmail.text.toString())
-//            bundle.putString(PHONE_NUMBER,binding.inputPh.text.toString())
-//            bundle.putString(PIN_CODE,binding.inputPinCode.text.toString())
-//            bundle.putString(ADDRESS,binding.inputAddress.text.toString())
             intent= Intent(this,DisplayActivity::class.java)
             intent.putExtra("user",getUser())
             startActivity(intent)
@@ -83,6 +78,16 @@ class HomeActivity : AppCompatActivity() {
             binding.inputPinCode.text.toString()
         )
 
+    }
+    private fun displayValidatedText(inputVisible: Int, validateDisplayVisible: Int)
+    {
+        binding.inputTV.visibility = inputVisible
+        binding.displayTV.visibility= validateDisplayVisible
+        binding.disUsernameTV.text = binding.inputUserName.text
+        binding.disEmailTV.text = binding.inputEmail.text
+        binding.disPhoneNumberTV.text = binding.inputPh.text
+        binding.disPinCodeTV.text = binding.inputPinCode.text
+        binding.disAddressTV.text = binding.inputAddress.text
     }
 
 

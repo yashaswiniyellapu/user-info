@@ -5,6 +5,4 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 class User(var userName:String, var phoneNumber:String, var email:String, var address:String,
-var pinCode:String) : Parcelable{
-
-}
+var pinCode:String) : Parcelable
