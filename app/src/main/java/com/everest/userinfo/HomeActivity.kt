@@ -38,11 +38,11 @@ class HomeActivity : AppCompatActivity() {
         }
         binding.confirmButton.setOnClickListener{
             val bundle = Bundle()
-            bundle.putString("userName",binding.inputUserName.text.toString())
-            bundle.putString("email",binding.inputEmail.text.toString())
-            bundle.putString("phoneNumber",binding.inputPh.text.toString())
-            bundle.putString("pinCode",binding.inputPinCode.text.toString())
-            bundle.putString("userAddress",binding.inputAddress.text.toString())
+            bundle.putString(USER_NAME,binding.inputUserName.text.toString())
+            bundle.putString(EMAIL,binding.inputEmail.text.toString())
+            bundle.putString(PHONE_NUMBER,binding.inputPh.text.toString())
+            bundle.putString(PIN_CODE,binding.inputPinCode.text.toString())
+            bundle.putString(ADDRESS,binding.inputAddress.text.toString())
             intent= Intent(this,DisplayActivity::class.java)
             intent.putExtras(bundle)
             startActivity(intent)
@@ -53,22 +53,22 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putString("userName",binding.inputUserName.text.toString())
-        outState.putString("email",binding.inputEmail.text.toString())
-        outState.putString("phoneNumber",binding.inputPh.text.toString())
-        outState.putString("pinCode",binding.inputPinCode.text.toString())
-        outState.putString("userAddress",binding.inputAddress.text.toString())
+        outState.putString(USER_NAME,binding.inputUserName.text.toString())
+        outState.putString(EMAIL,binding.inputEmail.text.toString())
+        outState.putString(PHONE_NUMBER,binding.inputPh.text.toString())
+        outState.putString(PIN_CODE,binding.inputPinCode.text.toString())
+        outState.putString(ADDRESS,binding.inputAddress.text.toString())
         outState.putInt("visibilityDisplay", binding.displayTV.visibility)
         outState.putInt("visibilityInput",binding.inputTV.visibility)
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
-        binding.disUsernameTV.text= savedInstanceState.getString("userName")
-        binding.disEmailTV.text=savedInstanceState.getString("email")
-        binding.disPhoneNumberTV.text=savedInstanceState.getString("phoneNumber")
-        binding.disPinCodeTV.text= savedInstanceState.getString("pinCode")
-        binding.disAddressTV.text=savedInstanceState.getString("userAddress")
+        binding.disUsernameTV.text= savedInstanceState.getString(USER_NAME)
+        binding.disEmailTV.text=savedInstanceState.getString(EMAIL)
+        binding.disPhoneNumberTV.text=savedInstanceState.getString(PHONE_NUMBER)
+        binding.disPinCodeTV.text= savedInstanceState.getString(PIN_CODE)
+        binding.disAddressTV.text=savedInstanceState.getString(ADDRESS)
         binding.displayTV.visibility=savedInstanceState.getInt("visibilityDisplay")
         binding.inputTV.visibility=savedInstanceState.getInt("visibilityInput")
     }

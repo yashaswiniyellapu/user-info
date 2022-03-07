@@ -90,6 +90,7 @@ class HomeActivityTest {
         onView(withText(equalToIgnoringCase("validate"))).perform(scrollTo(),click())
         onView(withText(equalToIgnoringCase("confirm"))).perform(click())
 
+
         intended(toPackage("com.everest.userinfo"))
         intended(hasExtra("userName","yashu"))
                 intended(hasExtra("email","yashu@gmail.com"))
