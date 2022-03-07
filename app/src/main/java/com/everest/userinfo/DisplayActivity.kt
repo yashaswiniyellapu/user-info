@@ -4,6 +4,7 @@ package com.everest.userinfo
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.everest.userinfo.databinding.AcitvityDisplayBinding
+import com.everest.userinfo.model.User
 
 
 class DisplayActivity : AppCompatActivity() {
@@ -14,12 +15,15 @@ class DisplayActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = AcitvityDisplayBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val bundle = intent.extras
+        val user = intent.getParcelableExtra<User>("user")
 
         binding.resultTV.text = getString(
-            R.string.confirm_message, bundle?.getString(USER_NAME), bundle?.getString(
-                ADDRESS
-            ), bundle?.getString(PIN_CODE), bundle?.get(PHONE_NUMBER), bundle?.getString(EMAIL)
+            R.string.confirm_message,
+            user?.userName,
+            user?.address,
+            user?.pinCode,
+            user?.phoneNumber,
+            user?.email
         )
 
     }

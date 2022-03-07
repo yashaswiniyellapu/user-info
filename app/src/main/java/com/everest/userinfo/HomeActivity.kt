@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import com.everest.userinfo.databinding.ActivityHomeBinding
+import com.everest.userinfo.model.User
 import com.everest.userinfo.validations.ValidateFields
 
 class HomeActivity : AppCompatActivity() {
@@ -37,14 +38,15 @@ class HomeActivity : AppCompatActivity() {
             binding.displayTV.visibility=View.GONE
         }
         binding.confirmButton.setOnClickListener{
-            val bundle = Bundle()
-            bundle.putString(USER_NAME,binding.inputUserName.text.toString())
-            bundle.putString(EMAIL,binding.inputEmail.text.toString())
-            bundle.putString(PHONE_NUMBER,binding.inputPh.text.toString())
-            bundle.putString(PIN_CODE,binding.inputPinCode.text.toString())
-            bundle.putString(ADDRESS,binding.inputAddress.text.toString())
+//            val bundle = Bundle()
+//            bundle.putParcelable("user", getUser())
+//            bundle.putString(USER_NAME,binding.inputUserName.text.toString())
+//            bundle.putString(EMAIL,binding.inputEmail.text.toString())
+//            bundle.putString(PHONE_NUMBER,binding.inputPh.text.toString())
+//            bundle.putString(PIN_CODE,binding.inputPinCode.text.toString())
+//            bundle.putString(ADDRESS,binding.inputAddress.text.toString())
             intent= Intent(this,DisplayActivity::class.java)
-            intent.putExtras(bundle)
+            intent.putExtra("user",getUser())
             startActivity(intent)
         }
 
@@ -71,6 +73,16 @@ class HomeActivity : AppCompatActivity() {
         binding.disAddressTV.text=savedInstanceState.getString(ADDRESS)
         binding.displayTV.visibility=savedInstanceState.getInt("visibilityDisplay")
         binding.inputTV.visibility=savedInstanceState.getInt("visibilityInput")
+    }
+    private fun getUser(): User {
+        return User(
+            binding.inputUserName.text.toString(),
+            binding.inputPh.text.toString(),
+            binding.inputEmail.text.toString(),
+            binding.inputAddress.text.toString(),
+            binding.inputPinCode.text.toString()
+        )
+
     }
 
 
