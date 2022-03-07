@@ -8,4 +8,8 @@
     <string name="validate">Validate</string>
     <string name="confirm_button">Confirm</string>
     <string name="cancel_button">Cancel</string>
+    <string name="confirm_message">
+        Hi %1$s, How are you? Are you staying at %2$s-%3$s. I am not able to contact you on %4$s. Can I
+email you the details at %5$s
+    </string>
 </resources>
