@@ -1,7 +1,6 @@
 package com.everest.userinfo.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -42,20 +41,14 @@ class InputFragment : Fragment(R.layout.fragment_input) {
 
         binding.validateButton.setOnClickListener {
             setUser()
-            Log.i("Btest", this.context?.let { it1 -> viewModel.validateInputs(it1) }.toString())
-            val bundle = Bundle()
-            bundle.putParcelable("user", viewModel.user.value)
             if (this.context?.let { it1 -> viewModel.validateInputs(it1) } == true) {
-                Log.i("test", "hello")
                 val validatedDisplayFragment = ValidateDisplayFragment()
-                validatedDisplayFragment.arguments = bundle
                 val transaction: FragmentTransaction =requireActivity().supportFragmentManager.beginTransaction()
                 transaction.replace(R.id.inputTV, validatedDisplayFragment)
                 transaction.addToBackStack(null)
                 transaction.commit()
             }
         }
-
         return binding.root
     }
 

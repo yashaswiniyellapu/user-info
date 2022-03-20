@@ -21,12 +21,10 @@ class UserViewModel() : ViewModel() {
 
     fun setUserDetails(user: User) {
         this._user.value = user
-        Log.i("ViewModelClass", user.userName)
     }
 
     fun validateInputs(context: Context): Boolean {
         val validate = ValidateFields(context)
-        Log.i("testInValidateFields","errrror")
         return user.value?.phoneNumber?.let {
             user.value?.pinCode?.let { it1 ->
                 user.value?.email?.let { it2 ->

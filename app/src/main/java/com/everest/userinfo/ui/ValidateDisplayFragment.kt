@@ -27,10 +27,8 @@ class ValidateDisplayFragment : Fragment(R.layout.fragment_validate) {
     ): View {
 
         binding = FragmentValidateBinding.inflate(inflater, container, false)
-        val bundle: Bundle? = this.arguments
-        val user = bundle?.getParcelable<User>("user")
-
-
+        val model= ViewModelProvider(requireActivity()).get(UserViewModel::class.java)
+        val user = model.user.value
 
 
         user?.let { displayValidatedText(it) }
@@ -51,10 +49,8 @@ class ValidateDisplayFragment : Fragment(R.layout.fragment_validate) {
 
     private fun passDataToConfirmScreen(user:User) {
         binding.confirmButton.setOnClickListener {
-            val confirmBundle = Bundle()
-            confirmBundle.putParcelable("user", user)
+
             val confirmFragment = ConfirmDisplayFragment()
-            confirmFragment.arguments = confirmBundle
             val transaction: FragmentTransaction =requireActivity().supportFragmentManager.beginTransaction()
             transaction.replace(R.id.inputTV, confirmFragment)
             transaction.addToBackStack(null)
