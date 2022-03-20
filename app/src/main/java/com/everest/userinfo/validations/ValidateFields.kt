@@ -1,12 +1,12 @@
 package com.everest.userinfo.validations
 
 
+import android.content.Context
 import android.util.Patterns
 import android.widget.Toast
 import com.everest.userinfo.HomeActivity
-import com.everest.userinfo.databinding.ActivityHomeBinding
 
-class ValidateFields constructor(private var homeActivity: HomeActivity) {
+class ValidateFields constructor(private var context: Context) {
 
     fun inputs(email:String, phNo:String, pinCode:String): Boolean {
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
@@ -51,7 +51,7 @@ class ValidateFields constructor(private var homeActivity: HomeActivity) {
 
     private fun makeToast(message:String)
     {
-        Toast.makeText(homeActivity,message,Toast.LENGTH_SHORT).show()
+        Toast.makeText(context,message,Toast.LENGTH_SHORT).show()
     }
 
 
